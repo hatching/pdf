@@ -467,6 +467,11 @@ const (
 	Stream
 )
 
+func (v Value) ID() uint64 {
+	r := uint64(v.ptr.id)
+	return (r << 16) + uint64(v.ptr.gen)
+}
+
 // Kind reports the kind of value underlying v.
 func (v Value) Kind() ValueKind {
 	switch v.data.(type) {
